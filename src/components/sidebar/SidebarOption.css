@@ -1,0 +1,18 @@
+.sidebar_option {
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 10px 20px;
+  transition: all .2s;
+  margin-left: 20px;
+}
+
+.sidebar_option:hover {
+  background-color: #e8f5fe;
+  border-radius: 30px;
+  color: #50b7f5;
+}
+
+.title {
+  margin-left: 10px !important;
+  font-weight: 600 !important;
+}

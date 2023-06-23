@@ -1,0 +1,25 @@
+.timeline {
+  flex: 0.45;
+  border-right: 1px solid var(--twitter-background);
+  overflow-y: scroll;
+}
+
+.timeline::-webkit-scrollbar {
+  display: none;
+}
+
+.time_line_title {
+  font-weight: 600 !important;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  height: 50px;
+  background: white;
+  z-index: 100;
+  border-bottom: 1px solid var(--twitter-background);
+  padding: 0 20px;
+}
