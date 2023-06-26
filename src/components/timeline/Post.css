@@ -2,6 +2,12 @@
   flex: 1;
   padding: 10px;
   border-bottom: 1px solid var(--twitter-background);
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.post:hover {
+  background: var(--twitter-background);
 }
 
 .post_header_text {
@@ -37,6 +43,7 @@
 
 .post_icons {
   margin-top: 20px;
+  padding: 0 70px 0 50px;
 }
 
 .post_icon {

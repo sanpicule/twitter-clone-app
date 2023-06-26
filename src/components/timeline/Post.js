@@ -2,10 +2,10 @@ import React from 'react'
 import {
   ChatBubbleOutline,
   FavoriteBorder,
-  PublicOutlined,
   Repeat,
   VerifiedUser
 } from '@mui/icons-material'
+import IosShareIcon from '@mui/icons-material/IosShare';
 import {
   Avatar,
   Stack,
@@ -30,18 +30,24 @@ const Post = ({ display_name, icon_image, post_image, post_content, official_fla
           <img
             className='post_image'
             src={post_image}
+            alt=''
           />
         }
       </Stack>
       <Stack
         direction='row'
-        justifyContent='space-around'
+        justifyContent='space-between'
         className='post_icons'
       >
-        <ChatBubbleOutline fontSize='small' className='bubble post_icon'></ChatBubbleOutline>
-        <Repeat fontSize='small' className='repeat post_icon' />
-        <FavoriteBorder fontSize='small' className='fav post_icon' />
-        <PublicOutlined fontSize='small' className='public post_icon' />
+        <Stack
+          direction='row'
+          spacing={8}
+        >
+          <ChatBubbleOutline fontSize='small' className='bubble post_icon'></ChatBubbleOutline>
+          <Repeat fontSize='small' className='repeat post_icon' />
+          <FavoriteBorder fontSize='small' className='fav post_icon' />
+        </Stack>
+        <IosShareIcon fontSize='small' className='public post_icon' />
       </Stack>
     </div>
   )
