@@ -1,7 +1,7 @@
 import Sidebar from './components/sidebar/Sidebar';
 import Timeline from './components/timeline/Timeline';
-import './App.css'
 import Widgets from './components/widget/Widgets';
+import './App.css'
 
 
 function App() {

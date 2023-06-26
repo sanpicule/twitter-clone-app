@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore"; 
-import { Typography } from '@mui/material'
+import { Alert, Snackbar, Typography } from '@mui/material'
 import './Timeline.css'
 import TweetBox from './TweetBox'
 import Post from './Post'
@@ -8,6 +8,8 @@ import db from '../../Firebase'
 
 const Timeline = () => {
   const [posts, setPosts] = useState([])
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('')
   useEffect(() => {
     const unsubscribe = onSnapshot(
       query(collection(db, 'posts'), orderBy('post_date', 'desc')),
@@ -16,11 +18,18 @@ const Timeline = () => {
         setPosts(updatedPosts)
       }
     );
-
     return () => {
       unsubscribe()
     };
   }, [])
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <div className='timeline'>
       <div className='header'>
@@ -30,14 +39,21 @@ const Timeline = () => {
       {posts.map((post) => (
         <Post
           key={post.post_id}
-          display_name={post.display_name}
-          icon_image={post.icon_image}
-          post_image={post.post_image}
-          post_content={post.post_content}
-          user_name={post.user_name}
-          official_flag={post.official_flag}
+          post={post}
+          setOpen={setOpen}
+          setMessage={setMessage}
         />
       ))}
+      <Snackbar
+        open={open}
+        autoHideDuration={4000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+      >
+        <Alert onClose={handleClose} style={{ backgroundColor: 'mediumspringgreen' }}>
+          {message}
+        </Alert>
+      </Snackbar>
     </div>
   )
 }
