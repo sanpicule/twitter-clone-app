@@ -35,7 +35,10 @@ const Timeline = () => {
       <div className='header'>
         <Typography className='time_line_title'>ホーム</Typography>
       </div>
-      <TweetBox />
+      <TweetBox
+        setOpen={setOpen}
+        setMessage={setMessage}
+      />
       {posts.map((post) => (
         <Post
           key={post.post_id}
@@ -48,10 +51,10 @@ const Timeline = () => {
         open={open}
         autoHideDuration={4000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <Box boxShadow={3}>
-          <Alert onClose={handleClose} style={{ backgroundColor: 'mediumspringgreen' }} >
+          <Alert onClose={handleClose} severity='success'>
             {message}
           </Alert>
         </Box>
