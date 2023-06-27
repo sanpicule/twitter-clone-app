@@ -20,7 +20,6 @@ const TweetBox = () => {
       official_flag: true,
       post_date: serverTimestamp()
     }
-    console.log(data)
     addDoc(collection(db, 'posts'), data);
     setPostContent('')
     setPostImageUrl('')
