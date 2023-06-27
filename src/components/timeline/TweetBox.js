@@ -5,9 +5,10 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import './TweetBox.css'
 import db from '../../Firebase'
 
-const TweetBox = () => {
+const TweetBox = ({ setOpen, setMessage }) => {
   const [postContent, setPostContent] = useState('')
   const [postImageUrl, setPostImageUrl] = useState('')
+  const isTrue = postContent ? true : false
   const handleSubmit = (e) => {
     e.preventDefault()
     const data = {
@@ -20,9 +21,11 @@ const TweetBox = () => {
       official_flag: true,
       post_date: serverTimestamp()
     }
-    addDoc(collection(db, 'posts'), data);
+    addDoc(collection(db, 'posts'), data)
     setPostContent('')
     setPostImageUrl('')
+    setOpen(true)
+    setMessage('ツイートしました')
   }
   return (
     <div className='tweet_box'>
@@ -41,7 +44,13 @@ const TweetBox = () => {
           className='image_input'
           onChange={(e) => setPostImageUrl(e.target.value)}
         />
-        <Button className='tweet_button' type='submit'>ツイートする</Button>
+        <Button
+          className={`tweet_button ${isTrue ? 'tweet_button_active' : ''}`}
+          type='submit'
+          disabled={!isTrue}
+        >
+          ツイートする
+        </Button>
       </form>
     </div>
   )

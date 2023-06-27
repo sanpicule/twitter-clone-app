@@ -40,6 +40,11 @@
   align-items: stretch !important;
   margin: 20px 10px 0 auto !important;
   transition: all .3s !important;
+  opacity: .7;
+}
+
+.tweet_button_active {
+  opacity: 1 !important;
 }
 
 .tweet_button:hover {
