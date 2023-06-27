@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore"; 
-import { Alert, Snackbar, Typography } from '@mui/material'
+import { Alert, Box, Snackbar, Typography } from '@mui/material'
 import './Timeline.css'
 import TweetBox from './TweetBox'
 import Post from './Post'
@@ -50,9 +50,11 @@ const Timeline = () => {
         onClose={handleClose}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       >
-        <Alert onClose={handleClose} style={{ backgroundColor: 'mediumspringgreen' }}>
-          {message}
-        </Alert>
+        <Box boxShadow={3}>
+          <Alert onClose={handleClose} style={{ backgroundColor: 'mediumspringgreen' }} >
+            {message}
+          </Alert>
+        </Box>
       </Snackbar>
     </div>
   )
