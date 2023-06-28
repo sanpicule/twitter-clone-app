@@ -2332,6 +2332,11 @@
   resolved "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
+"@remix-run/router@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.7.0.tgz"
+  integrity sha512-Eu1V3kz3mV0wUpVTiFHuaT8UD1gj/0VnoFHQYX35xlslQUpe8CuYoKFn9d4WZFHm3yDywz6ALZuGdnUPKrNeAw==
+
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
   resolved "https://registry.npmjs.org/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz"
@@ -8521,7 +8526,7 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-"react-dom@^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^17.0.0 || ^18.0.0", react-dom@^18.0.0, react-dom@^18.2.0, react-dom@>=16.6.0:
+"react-dom@^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^17.0.0 || ^18.0.0", react-dom@^18.0.0, react-dom@^18.2.0, react-dom@>=16.6.0, react-dom@>=16.8:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -8563,6 +8568,21 @@ react-refresh@^0.11.0, "react-refresh@>=0.10.0 <1.0.0":
   version "0.11.0"
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
+
+react-router-dom@^6.14.0:
+  version "6.14.0"
+  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.14.0.tgz"
+  integrity sha512-YEwlApKwzMMMbGbhh+Q7MsloTldcwMgHxUY/1g0uA62+B1hZo2jsybCWIDCL8zvIDB1FA0pBKY9chHbZHt+2dQ==
+  dependencies:
+    "@remix-run/router" "1.7.0"
+    react-router "6.14.0"
+
+react-router@6.14.0:
+  version "6.14.0"
+  resolved "https://registry.npmjs.org/react-router/-/react-router-6.14.0.tgz"
+  integrity sha512-OD+vkrcGbvlwkspUFDgMzsu1RXwdjNh83YgG/28lBnDzgslhCgxIqoExLlxsfTpIygp7fc+Hd3esloNwzkm2xA==
+  dependencies:
+    "@remix-run/router" "1.7.0"
 
 react-scripts@5.0.1:
   version "5.0.1"
@@ -8636,7 +8656,7 @@ react-twitter-embed@^4.0.4:
   dependencies:
     scriptjs "^2.5.9"
 
-"react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=16.6.0, react@>=16.8.0:
+"react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=16.6.0, react@>=16.8, react@>=16.8.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

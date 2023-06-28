@@ -51,10 +51,10 @@ const Timeline = () => {
         open={open}
         autoHideDuration={4000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       >
         <Box boxShadow={3}>
-          <Alert onClose={handleClose} severity='success'>
+          <Alert onClose={handleClose} style={{ backgroundColor: 'lightgreen' }}>
             {message}
           </Alert>
         </Box>

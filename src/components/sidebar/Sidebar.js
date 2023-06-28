@@ -11,6 +11,7 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Button } from '@mui/material';
 import './Sidebar.css'
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
@@ -25,6 +26,10 @@ const Sidebar = () => {
       <SidebarOption Text='プロフィール' Icon={PermIdentityIcon}/>
       <SidebarOption Text='もっと見る' Icon={MoreHorizIcon}/>
       <Button variant="outlined" className='sidebar_tweet'>ツイートする</Button>
+      <Button
+        LinkComponent={Link}
+        to={'/'}
+        style={{ marginTop: '20px', width: '100%' }}>ログアウト</Button>
     </div>
   )
 }

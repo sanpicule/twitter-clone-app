@@ -2,6 +2,7 @@
   flex: 0.35;
   padding: 5px;
   overflow-y: scroll;
+  margin-right: 10%;
 }
 
 .widgets::-webkit-scrollbar {
