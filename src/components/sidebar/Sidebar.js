@@ -9,10 +9,12 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { Button } from '@mui/material';
 import './Sidebar.css'
+import TweetModal from '../modal/TweetModal.js'
+
 
 const Sidebar = () => {
+
   return (
     <div className='sidebar'>
       <TwitterIcon className='sidebar_twitter_icon' />
@@ -24,7 +26,7 @@ const Sidebar = () => {
       <SidebarOption Text='リスト' Icon={ListAltIcon}/>
       <SidebarOption Text='プロフィール' Icon={PermIdentityIcon}/>
       <SidebarOption Text='もっと見る' Icon={MoreHorizIcon}/>
-      <Button variant="outlined" className='sidebar_tweet'>ツイートする</Button>
+      <TweetModal/>
     </div>
   )
 }
