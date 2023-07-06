@@ -7,7 +7,7 @@ import {
   Typography
 } from '@mui/material'
 
-import styles from './Login.module.css'
+import styles from './styles/Login.module.css'
 import { auth, provider } from './Firebase'
 import { signInWithPopup } from 'firebase/auth'
 import PasswordResetModal from './PasswordResetModal'

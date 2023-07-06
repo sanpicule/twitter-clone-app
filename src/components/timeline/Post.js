@@ -7,6 +7,7 @@ import {
   collection
 } from "firebase/firestore"
 import db from '../../Firebase'
+import classNames from 'classnames';
 
 import {
   ChatBubbleOutline,
@@ -21,12 +22,16 @@ import {
 } from '@mui/material'
 import IosShareIcon from '@mui/icons-material/IosShare'
 
-import './Post.css'
+import styles from './styles/Post.module.css'
 import { selectUser } from '../../feature/userSlice'
 import { useSelector } from 'react-redux'
 import DotsMenu from '../../common/components/DotsMenu'
 
 const Post = ({ post, setOpen, setMessage }) => {
+  const bubble = classNames(styles.bubble, styles.post_icon)
+  const repeat = classNames(styles.repeat, styles.post_icon)
+  const fav = classNames(styles.fav, styles.post_icon)
+  const share = classNames(styles.public, styles.post_icon)
   const user = useSelector(selectUser)
   const handleDelete = async(postId) => {
     try {
@@ -46,14 +51,21 @@ const Post = ({ post, setOpen, setMessage }) => {
   }
 
   return (
-    <div className='post'>
+    <div className={styles.post}>
       <Stack direction='row' alignItems='center'>
-        <Avatar className='post_avatar' src={post.icon_image} />
-        <Typography className='post_header_text'>{post.display_name}</Typography>
+        <Avatar
+          className={styles.post_avatar}
+          src={post.icon_image}
+        />
+        <Typography
+          className={styles.post_header_text}
+        >
+          {post.display_name}
+        </Typography>
         {post.official_flag &&
-          <VerifiedUser className='post_badge' />
+          <VerifiedUser className={styles.post_badge} />
         }
-        <Typography className='post_special'>@{post.user_name}</Typography>
+        <Typography className={styles.post_special}>@{post.user_name}</Typography>
         <Stack style={{ marginLeft: '55%' }}>
           <DotsMenu
             handleDelete={handleDelete}
@@ -63,11 +75,15 @@ const Post = ({ post, setOpen, setMessage }) => {
           />
         </Stack>
       </Stack>
-      <Stack className='post_contents'>
-        <Typography className='post_content'>{post.post_content}</Typography>
+      <Stack className={styles.post_contents}>
+        <Typography
+          className={styles.post_content}
+        >
+          {post.post_content}
+        </Typography>
         {post.post_image &&
           <img
-            className='post_image'
+            className={styles.post_image}
             src={post.post_image}
             alt=''
           />
@@ -76,17 +92,17 @@ const Post = ({ post, setOpen, setMessage }) => {
       <Stack
         direction='row'
         justifyContent='space-between'
-        className='post_icons'
+        className={styles.post_icons}
       >
         <Stack
           direction='row'
           spacing={8}
         > 
-          <ChatBubbleOutline fontSize='small' className='bubble post_icon'></ChatBubbleOutline>
-          <Repeat fontSize='small' className='repeat post_icon' />
-          <FavoriteBorder fontSize='small' className='fav post_icon' />
+          <ChatBubbleOutline fontSize='small' className={bubble} />
+          <Repeat fontSize='small' className={repeat} />
+          <FavoriteBorder fontSize='small' className={fav} />
         </Stack>
-        <IosShareIcon fontSize='small' className='public post_icon' />
+        <IosShareIcon fontSize='small' className={share} />
       </Stack>
     </div>
   )

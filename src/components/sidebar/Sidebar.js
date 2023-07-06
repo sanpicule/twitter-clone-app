@@ -10,14 +10,14 @@ import ListAltIcon from '@mui/icons-material/ListAlt'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { Button } from '@mui/material'
-import './Sidebar.css'
+import styles from './styles/Sidebar.module.css'
 import LogoutModal from '../../common/components/LogoutModal'
 
 const Sidebar = () => {
   const [modalOpen, setModalOpen] = useState(false)
   return (
-    <div className='sidebar'>
-      <TwitterIcon className='sidebar_twitter_icon' />
+    <div className={styles.sidebar}>
+      <TwitterIcon className={styles.sidebar_twitter_icon} />
       <SidebarOption Text='ホーム' Icon={HomeIcon}/>
       <SidebarOption Text='話題を検索' Icon={SearchIcon}/>
       <SidebarOption Text='通知' Icon={NotificationsNoneIcon}/>
@@ -26,7 +26,12 @@ const Sidebar = () => {
       <SidebarOption Text='リスト' Icon={ListAltIcon}/>
       <SidebarOption Text='プロフィール' Icon={PermIdentityIcon}/>
       <SidebarOption Text='もっと見る' Icon={MoreHorizIcon}/>
-      <Button variant="outlined" className='sidebar_tweet'>ツイートする</Button>
+      <Button
+        variant="outlined"
+        className={styles.sidebar_tweet}
+      >
+        ツイートする
+      </Button>
       <Button
         onClick={() => setModalOpen(true)}
         style={{ marginTop: '20px', width: '100%' }}

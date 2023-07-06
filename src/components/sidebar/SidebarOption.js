@@ -1,12 +1,19 @@
 import React from 'react'
 import { Stack, Typography } from '@mui/material'
-import './SidebarOption.css'
+import styles from './styles/SidebarOption.module.css'
 
 const SidebarOption = ({ Text, Icon }) => {
   return (
-    <Stack direction='row' alignItems='center' className='sidebar_option'>
+    <Stack
+      direction='row'
+      alignItems='center'
+      className={styles.sidebar_option}>
       <Icon />
-      <Typography className='title'>{Text}</Typography>
+      <Typography
+        className={styles.title}
+      >
+        {Text}
+      </Typography>
     </Stack>
   )
 }

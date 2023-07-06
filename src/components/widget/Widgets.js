@@ -5,18 +5,18 @@ import {
   TwitterShareButton,
   TwitterTweetEmbed
 } from 'react-twitter-embed'
-import './Widget.css'
+import styles from './styles/Widget.module.css'
 import { Stack, Typography } from '@mui/material'
 
 const Widgets = () => {
   return (
-    <div className='widgets'>
-      <Stack direction='row' alignItems='center' className='search'>
-        <Search className='search_icon' />
-        <input placeholder='キーワード検索' className='search_input'></input>
+    <div className={styles.widgets}>
+      <Stack direction='row' alignItems='center' className={styles.search}>
+        <Search className={styles.search_icon} />
+        <input placeholder='キーワード検索' className={styles.search_input}></input>
       </Stack>
-      <div className='widget_container'>
-        <Typography className='widget_title'>固定されたツイート</Typography>
+      <div className={styles.widget_container}>
+        <Typography className={styles.widget_title}>固定されたツイート</Typography>
         <TwitterTweetEmbed
           tweetId={'1662898485593624576'}
         />
@@ -25,7 +25,7 @@ const Widgets = () => {
           screenName="fcbarcelona_tr"
           options={{height: 400}}
         />
-        <div className='widget_tweet_button'>
+        <div className={styles.widget_tweet_button}>
           <TwitterShareButton
             url={'https://twitter.com/fcbarcelona_tr'}
             options={{ text: '#reactjs', via: 'fcbarcelona_tr',  }}
