@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { Avatar, Button } from '@mui/material'
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+import classNames from 'classnames';
 
 import { selectUser } from '../../feature/userSlice'
 import { useSelector } from 'react-redux'
-import './TweetBox.css'
+import styles from './styles/TweetBox.module.css'
 import db from '../../Firebase'
 
 const TweetBox = ({ setOpen, setMessage }) => {
@@ -13,6 +14,7 @@ const TweetBox = ({ setOpen, setMessage }) => {
   const [postImageUrl, setPostImageUrl] = useState('')
   const user = useSelector(selectUser)
   const isTrue = postContent ? true : false
+  const buttonClasses = classNames(styles.tweet_button, { [styles.tweet_button_active]: isTrue });
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -33,10 +35,10 @@ const TweetBox = ({ setOpen, setMessage }) => {
     setMessage('ツイートしました')
   }
   return (
-    <div className='tweet_box'>
-      <form className='tweet_form' onSubmit={handleSubmit}>
-        <div className='tweet_box_input'>
-          <Avatar className='avatar' src={user.photoURL} />
+    <div className={styles.tweet_box}>
+      <form className={styles.tweet_form} onSubmit={handleSubmit}>
+        <div className={styles.tweet_box_input}>
+          <Avatar className={styles.avatar} src={user.photoURL} />
           <input
             value={postContent}
             placeholder='今何してる？'
@@ -46,11 +48,11 @@ const TweetBox = ({ setOpen, setMessage }) => {
         <input
           value={postImageUrl}
           placeholder='画像のURLを入力してください'
-          className='image_input'
+          className={styles.image_input}
           onChange={(e) => setPostImageUrl(e.target.value)}
         />
         <Button
-          className={`tweet_button ${isTrue ? 'tweet_button_active' : ''}`}
+          className={buttonClasses}
           type='submit'
           disabled={!isTrue}
         >

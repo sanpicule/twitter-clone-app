@@ -7,7 +7,7 @@ import {
   Typography
 } from '@mui/material'
 
-import './Timeline.css'
+import styles from './styles/Timeline.module.css'
 import TweetBox from './TweetBox'
 import Post from './Post'
 import db from '../../Firebase'
@@ -38,9 +38,9 @@ const Timeline = () => {
   }
 
   return (
-    <div className='timeline'>
-      <div className='header'>
-        <Typography className='time_line_title'>ホーム</Typography>
+    <div className={styles.timeline}>
+      <div className={styles.header}>
+        <Typography className={styles.time_line_title}>ホーム</Typography>
       </div>
       <TweetBox
         setOpen={setOpen}

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import styles from './App.module.css'
+import styles from './styles/App.module.css'
 import Login from './Login'
 import Main from './Main'
 import { auth } from './Firebase'
