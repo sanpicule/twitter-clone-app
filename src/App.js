@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import styles from './App.module.css'
-import Login from './Login';
-import Main from './Main';
-import { auth } from './Firebase';
-import { login, logout, selectUser } from './feature/userSlice';
+import Login from './Login'
+import Main from './Main'
+import { auth } from './Firebase'
+import { login, logout, selectUser } from './feature/userSlice'
 
 function App() {
   const user = useSelector(selectUser)
@@ -36,7 +36,7 @@ function App() {
         )}
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

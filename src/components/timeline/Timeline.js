@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore"; 
-import { Alert, Box, Snackbar, Typography } from '@mui/material'
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore"
+import {
+  Alert,
+  Box,
+  Snackbar,
+  Typography
+} from '@mui/material'
+
 import './Timeline.css'
 import TweetBox from './TweetBox'
 import Post from './Post'
@@ -8,7 +14,7 @@ import db from '../../Firebase'
 
 const Timeline = () => {
   const [posts, setPosts] = useState([])
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const [message, setMessage] = useState('')
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -17,19 +23,20 @@ const Timeline = () => {
         const updatedPosts = querySnapshot.docs.map((doc) => doc.data())
         setPosts(updatedPosts)
       }
-    );
+    )
     return () => {
       unsubscribe()
-    };
+    }
   }, [])
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
-      return;
+      return
     }
 
-    setOpen(false);
-  };
+    setOpen(false)
+  }
+
   return (
     <div className='timeline'>
       <div className='header'>

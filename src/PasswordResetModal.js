@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   Modal,
   TextField,
   Button,
   Stack,
   Typography
-} from '@mui/material';
+} from '@mui/material'
 
 const PasswordResetModal = ({ isOpen, onClose }) => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('')
   const sendResetEmail = async () => {
     console.log(email)
     // ↓多分こんな感じでできる

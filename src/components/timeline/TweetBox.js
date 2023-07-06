@@ -9,11 +9,11 @@ import './TweetBox.css'
 import db from '../../Firebase'
 
 const TweetBox = ({ setOpen, setMessage }) => {
+  const [postContent, setPostContent] = useState('')
+  const [postImageUrl, setPostImageUrl] = useState('')
   const user = useSelector(selectUser)
   const isTrue = postContent ? true : false
 
-  const [postContent, setPostContent] = useState('')
-  const [postImageUrl, setPostImageUrl] = useState('')
   const handleSubmit = (e) => {
     e.preventDefault()
     const data = {

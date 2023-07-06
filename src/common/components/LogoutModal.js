@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 import {
   Button,
   Modal,
   Stack,
   Typography
-} from '@mui/material';
-import { auth } from '../../Firebase';
+} from '@mui/material'
+import { auth } from '../../Firebase'
 
 const LogoutModal = ({ isOpen, onClose }) => {
   return (

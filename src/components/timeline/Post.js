@@ -6,12 +6,11 @@ import {
   getDocs,
   collection
 } from "firebase/firestore"
-import db from '../../Firebase';
+import db from '../../Firebase'
 
 import {
   ChatBubbleOutline,
   FavoriteBorder,
-  MapsUgcRounded,
   Repeat,
   VerifiedUser
 } from '@mui/icons-material'
@@ -31,14 +30,14 @@ const Post = ({ post, setOpen, setMessage }) => {
   const user = useSelector(selectUser)
   const handleDelete = async(postId) => {
     try {
-      const q = query(collection(db, 'posts'), where('post_id', '==', postId));
-      const querySnapshot = await getDocs(q);
+      const q = query(collection(db, 'posts'), where('post_id', '==', postId))
+      const querySnapshot = await getDocs(q)
       if (querySnapshot.empty) {
         setMessage('投稿が見つかりません。')
-        return;
+        return
       }
-      const doc = querySnapshot.docs[0];
-      await deleteDoc(doc.ref);
+      const doc = querySnapshot.docs[0]
+      await deleteDoc(doc.ref)
       setOpen(true)
       setMessage('投稿を削除しました。')
     } catch (error) {

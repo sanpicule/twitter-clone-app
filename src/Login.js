@@ -14,8 +14,8 @@ import PasswordResetModal from './PasswordResetModal'
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true)
-  const [modalOpen, setModalOpen] = useState(false);
-  const [error, setError] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
+  const [error, setError] = useState(false)
   const [userName, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
