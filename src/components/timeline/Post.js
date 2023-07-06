@@ -1,22 +1,34 @@
 import React from 'react'
 import {
+  deleteDoc,
+  query,
+  where,
+  getDocs,
+  collection
+} from "firebase/firestore"
+import db from '../../Firebase';
+
+import {
   ChatBubbleOutline,
   FavoriteBorder,
+  MapsUgcRounded,
   Repeat,
   VerifiedUser
 } from '@mui/icons-material'
-import IosShareIcon from '@mui/icons-material/IosShare';
 import {
   Avatar,
   Stack,
   Typography
 } from '@mui/material'
+import IosShareIcon from '@mui/icons-material/IosShare'
+
 import './Post.css'
-import DotsMenu from '../../common/components/DotsMenu';
-import { deleteDoc, query, where, getDocs, collection } from "firebase/firestore";
-import db from '../../Firebase';
+import { selectUser } from '../../feature/userSlice'
+import { useSelector } from 'react-redux'
+import DotsMenu from '../../common/components/DotsMenu'
 
 const Post = ({ post, setOpen, setMessage }) => {
+  const user = useSelector(selectUser)
   const handleDelete = async(postId) => {
     try {
       const q = query(collection(db, 'posts'), where('post_id', '==', postId));
@@ -47,6 +59,8 @@ const Post = ({ post, setOpen, setMessage }) => {
           <DotsMenu
             handleDelete={handleDelete}
             postId={post.post_id}
+            iconImage={post.icon_image}
+            photoURL={user.photoURL}
           />
         </Stack>
       </Stack>
@@ -68,7 +82,7 @@ const Post = ({ post, setOpen, setMessage }) => {
         <Stack
           direction='row'
           spacing={8}
-        >
+        > 
           <ChatBubbleOutline fontSize='small' className='bubble post_icon'></ChatBubbleOutline>
           <Repeat fontSize='small' className='repeat post_icon' />
           <FavoriteBorder fontSize='small' className='fav post_icon' />

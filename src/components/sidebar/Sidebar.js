@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TwitterIcon from '@mui/icons-material/Twitter';
 import HomeIcon from '@mui/icons-material/Home';
 import SidebarOption from './SidebarOption';
@@ -11,9 +11,10 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Button } from '@mui/material';
 import './Sidebar.css'
-import { Link } from 'react-router-dom';
+import LogoutModal from '../../common/components/LogoutModal';
 
 const Sidebar = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <div className='sidebar'>
       <TwitterIcon className='sidebar_twitter_icon' />
@@ -27,9 +28,15 @@ const Sidebar = () => {
       <SidebarOption Text='もっと見る' Icon={MoreHorizIcon}/>
       <Button variant="outlined" className='sidebar_tweet'>ツイートする</Button>
       <Button
-        LinkComponent={Link}
-        to={'/'}
-        style={{ marginTop: '20px', width: '100%' }}>ログアウト</Button>
+        onClick={() => setModalOpen(true)}
+        style={{ marginTop: '20px', width: '100%' }}
+      >
+        ログアウト
+      </Button>
+      <LogoutModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   )
 }

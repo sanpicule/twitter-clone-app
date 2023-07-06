@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 import { Avatar, Button } from '@mui/material'
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+
+import { selectUser } from '../../feature/userSlice'
+import { useSelector } from 'react-redux'
 import './TweetBox.css'
 import db from '../../Firebase'
 
 const TweetBox = ({ setOpen, setMessage }) => {
+  const user = useSelector(selectUser)
+  const isTrue = postContent ? true : false
+
   const [postContent, setPostContent] = useState('')
   const [postImageUrl, setPostImageUrl] = useState('')
-  const isTrue = postContent ? true : false
   const handleSubmit = (e) => {
     e.preventDefault()
     const data = {
@@ -16,7 +21,7 @@ const TweetBox = ({ setOpen, setMessage }) => {
       post_content: postContent,
       post_image: postImageUrl,
       display_name: 'Sanpi',
-      icon_image: 'https://taroken.org/wp-content/uploads/2017/07/sunlight-e1500176424123.jpg',
+      icon_image: user.photoURL,
       user_name: 'sanpicule',
       official_flag: true,
       post_date: serverTimestamp()
@@ -31,7 +36,7 @@ const TweetBox = ({ setOpen, setMessage }) => {
     <div className='tweet_box'>
       <form className='tweet_form' onSubmit={handleSubmit}>
         <div className='tweet_box_input'>
-          <Avatar className='avatar' src='https://taroken.org/wp-content/uploads/2017/07/sunlight-e1500176424123.jpg' />
+          <Avatar className='avatar' src={user.photoURL} />
           <input
             value={postContent}
             placeholder='今何してる？'

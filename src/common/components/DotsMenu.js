@@ -7,12 +7,14 @@ import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
 import { Typography } from '@mui/material';
 
-const DotsMenu = ({ handleDelete, postId }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+const DotsMenu = ({ handleDelete, postId, iconImage, photoURL }) => {
   const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -44,10 +46,12 @@ const DotsMenu = ({ handleDelete, postId }) => {
           horizontal: 'left',
         }}
       >
-        <MenuItem onClick={() => handleDelete(postId)} style={{ color: 'red' }}>
-          <DeleteRoundedIcon />
-          <Typography style={{ marginLeft: '10px' }}>削除</Typography>
-        </MenuItem>
+        {photoURL === iconImage &&
+          <MenuItem onClick={() => handleDelete(postId)} style={{ color: 'red' }}>
+            <DeleteRoundedIcon />
+            <Typography style={{ marginLeft: '10px' }}>削除</Typography>
+          </MenuItem>
+        }
         <MenuItem onClick={handleClose}>
           <Person2RoundedIcon />
           <Typography style={{ marginLeft: '10px' }}>プロフィール</Typography>
