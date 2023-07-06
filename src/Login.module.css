@@ -1,0 +1,85 @@
+.login {
+  background-image: url(https://images.unsplash.com/photo-1585250003680-b12dbff01e65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+}
+
+.login::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.login_container {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  top: 10%;
+  left: 60%;
+  border-radius: 20px;
+  width: 25%;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 20px 30px 5px rgb(104, 103, 103);
+  z-index: 10;
+}
+
+.twitter_icon {
+  color: var(--twitter-color);
+  font-size: 50px !important;
+  margin: 20px 0 !important;
+}
+
+.twitter_icon_bg {
+  display: inline-block;
+  border-radius: 50%;
+  padding: 30px 32px;
+  transition: all .6s;
+  margin: 10px 0;
+}
+
+.login_title {
+  font-size: 25px !important;
+  font-weight: bold !important;
+  margin-top: 20px !important;
+}
+
+.login_google_button {
+  width: 100%;
+  margin-top: 30px !important;
+  background: #E53935 !important;
+  color: white !important;
+  padding: 10px 0 !important;
+  border-radius: 20px !important;
+  font-weight: bold !important;
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.login_input {
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.login_button {
+  padding: 10px;
+  border: none;
+  background: var(--twitter-color);
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}

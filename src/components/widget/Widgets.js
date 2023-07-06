@@ -4,9 +4,9 @@ import {
   TwitterTimelineEmbed,
   TwitterShareButton,
   TwitterTweetEmbed
-} from 'react-twitter-embed';
+} from 'react-twitter-embed'
 import './Widget.css'
-import { Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material'
 
 const Widgets = () => {
   return (
