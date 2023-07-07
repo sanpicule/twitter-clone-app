@@ -1,12 +1,11 @@
 .tweet_modal_wrapper {
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
   height: 250px;
   background-color: white;
-  border: 2px solid #000;
   border-radius: 8px;
   padding: 8px;
 }
