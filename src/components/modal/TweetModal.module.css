@@ -64,18 +64,3 @@
 .tweet_button:hover {
   opacity: .7;
 }
-
-.sidebar_tweet {
-  background: #50b7f5 !important;
-  color: rgb(255, 254, 254) !important;
-  border: none !important;
-  border-radius: 20px !important;
-  margin-top: 20px !important;
-  font-weight: bold !important;
-  width: 100%;
-  transition: all .3s !important;
-}
-
-.sidebar_tweet:hover {
-  opacity: .7;
-}

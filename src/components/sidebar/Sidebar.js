@@ -11,9 +11,12 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import './Sidebar.css'
 import TweetModal from '../modal/TweetModal.js'
+import { Button } from '@mui/material';
 
 
 const Sidebar = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
 
   return (
     <div className='sidebar'>
@@ -26,7 +29,14 @@ const Sidebar = () => {
       <SidebarOption Text='リスト' Icon={ListAltIcon}/>
       <SidebarOption Text='プロフィール' Icon={PermIdentityIcon}/>
       <SidebarOption Text='もっと見る' Icon={MoreHorizIcon}/>
-      <TweetModal/>
+      <Button
+        variant="outlined"
+        className= 'sidebar_tweet'
+        onClick={handleOpen}
+      >
+        ツイートする
+      </Button>
+      <TweetModal open={open} setOpen={setOpen} />
     </div>
   )
 }

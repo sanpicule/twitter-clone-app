@@ -5,9 +5,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import db from '../../Firebase'
 import styles from './TweetModal.module.css'
 
-const TweetModal = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+const TweetModal = ({ setOpen, open }) => {
   const handleClose = () => setOpen(false);
   const [postContent, setPostContent] = useState('')
   const [postImageUrl, setPostImageUrl] = useState('')
@@ -33,7 +31,6 @@ const TweetModal = () => {
 
   return (
     <div>
-      <Button variant="outlined" className={ styles.sidebar_tweet } onClick={handleOpen}>ツイートする</Button>
       <Modal
         open={open}
         onClose={handleClose}
