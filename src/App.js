@@ -1,17 +1,42 @@
-import Sidebar from './components/sidebar/Sidebar';
-import Timeline from './components/timeline/Timeline';
-import Widgets from './components/widget/Widgets';
-import './App.css'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
+import styles from './styles/App.module.css'
+import Login from './Login'
+import Main from './Main'
+import { auth } from './Firebase'
+import { login, logout, selectUser } from './feature/userSlice'
 
 function App() {
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    const unSub = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch(login({
+          uid: authUser.uid,
+          photoURL: authUser.photoURL,
+          displayName: authUser.displayName
+        }))
+      } else {
+        dispatch(logout())
+      }
+    })
+    return () => {
+      unSub()
+    }
+  }, [dispatch])
   return (
-    <div className="app">
-      <Sidebar />
-      <Timeline />
-      <Widgets />
-    </div>
-  );
+    <>
+      <div className={styles.app}>
+        {user.uid ? (
+          <Main />
+        ) : (
+          <Login />
+        )}
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App

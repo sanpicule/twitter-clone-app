@@ -1,21 +1,23 @@
-import * as React from 'react';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
-import { Typography } from '@mui/material';
+import * as React from 'react'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import IconButton from '@mui/material/IconButton'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded'
+import Person2RoundedIcon from '@mui/icons-material/Person2Rounded'
+import { Typography } from '@mui/material'
 
-const DotsMenu = ({ handleDelete, postId }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+const DotsMenu = ({ handleDelete, postId, iconImage, photoURL }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
+  
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   return (
     <div>
@@ -44,17 +46,19 @@ const DotsMenu = ({ handleDelete, postId }) => {
           horizontal: 'left',
         }}
       >
-        <MenuItem onClick={() => handleDelete(postId)} style={{ color: 'red' }}>
-          <DeleteRoundedIcon />
-          <Typography style={{ marginLeft: '10px' }}>削除</Typography>
-        </MenuItem>
+        {photoURL === iconImage &&
+          <MenuItem onClick={() => handleDelete(postId)} style={{ color: 'red' }}>
+            <DeleteRoundedIcon />
+            <Typography style={{ marginLeft: '10px' }}>削除</Typography>
+          </MenuItem>
+        }
         <MenuItem onClick={handleClose}>
           <Person2RoundedIcon />
           <Typography style={{ marginLeft: '10px' }}>プロフィール</Typography>
         </MenuItem>
       </Menu>
     </div>
-  );
+  )
 }
 
 export default DotsMenu
