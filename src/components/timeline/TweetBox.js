@@ -22,7 +22,7 @@ const TweetBox = ({ setOpen, setMessage }) => {
       post_id: uuidv4(),
       post_content: postContent,
       post_image: postImageUrl,
-      display_name: 'Sanpi',
+      display_name: user.displayName,
       icon_image: user.photoURL,
       user_name: 'sanpicule',
       official_flag: true,

@@ -52,28 +52,32 @@ const Post = ({ post, setOpen, setMessage }) => {
 
   return (
     <div className={styles.post}>
-      <Stack direction='row' alignItems='center'>
-        <Avatar
-          className={styles.post_avatar}
-          src={post.icon_image}
-        />
-        <Typography
-          className={styles.post_header_text}
-        >
-          {post.display_name}
-        </Typography>
-        {post.official_flag &&
-          <VerifiedUser className={styles.post_badge} />
-        }
-        <Typography className={styles.post_special}>@{post.user_name}</Typography>
-        <Stack style={{ marginLeft: '55%' }}>
+      <Stack
+        direction='row'
+        alignItems='center'
+        justifyContent='space-between'
+      >
+        <Stack direction='row' alignItems='center'>
+          <Avatar
+            className={styles.post_avatar}
+            src={post.icon_image}
+          />
+          <Typography
+            className={styles.post_header_text}
+          >
+            {post.display_name}
+          </Typography>
+          {post.official_flag &&
+            <VerifiedUser className={styles.post_badge} />
+          }
+          <Typography className={styles.post_special}>@{post.user_name}</Typography>
+        </Stack>
           <DotsMenu
             handleDelete={handleDelete}
             postId={post.post_id}
             iconImage={post.icon_image}
             photoURL={user.photoURL}
           />
-        </Stack>
       </Stack>
       <Stack className={styles.post_contents}>
         <Typography
