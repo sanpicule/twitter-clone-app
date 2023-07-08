@@ -25,7 +25,7 @@ import IosShareIcon from '@mui/icons-material/IosShare'
 import styles from './styles/Post.module.css'
 import { selectUser } from '../../feature/userSlice'
 import { useSelector } from 'react-redux'
-import DotsMenu from '../../common/components/DotsMenu'
+import DotsMenu from '../../components/common/DotsMenu'
 
 const Post = ({ post, setOpen, setMessage }) => {
   const bubble = classNames(styles.bubble, styles.post_icon)

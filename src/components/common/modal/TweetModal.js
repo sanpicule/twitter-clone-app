@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Box, Button, Modal, Avatar } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import db from '../../Firebase'
 import styles from './TweetModal.module.css'
-import { selectUser } from '../../feature/userSlice'
+import { selectUser } from '../../../feature/userSlice'
 import { useSelector } from 'react-redux'
+import db from '../../../Firebase';
 
 const TweetModal = ({ setOpen, open }) => {
   const handleClose = () => setOpen(false);

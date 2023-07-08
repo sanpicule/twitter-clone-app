@@ -5,7 +5,7 @@ import {
   Stack,
   Typography
 } from '@mui/material'
-import { auth } from '../../Firebase'
+import { auth } from '../../../Firebase'
 
 const LogoutModal = ({ isOpen, onClose }) => {
   return (
