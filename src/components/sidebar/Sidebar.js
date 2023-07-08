@@ -12,9 +12,15 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { Button } from '@mui/material'
 import styles from './styles/Sidebar.module.css'
 import LogoutModal from '../../common/components/LogoutModal'
+import TweetModal from '../modal/TweetModal.js'
+
+
 
 const Sidebar = () => {
+  const [open, setOpen] = React.useState(false);
   const [modalOpen, setModalOpen] = useState(false)
+  const handleOpen = () => setOpen(true);
+
   return (
     <div className={styles.sidebar}>
       <TwitterIcon className={styles.sidebar_twitter_icon} />
@@ -29,9 +35,11 @@ const Sidebar = () => {
       <Button
         variant="outlined"
         className={styles.sidebar_tweet}
+        onClick={handleOpen}
       >
         ツイートする
       </Button>
+      <TweetModal open={open} setOpen={setOpen} />
       <Button
         onClick={() => setModalOpen(true)}
         style={{ marginTop: '20px', width: '100%' }}
