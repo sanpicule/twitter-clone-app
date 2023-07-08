@@ -4,20 +4,23 @@ import { v4 as uuidv4 } from 'uuid';
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import db from '../../Firebase'
 import styles from './TweetModal.module.css'
+import { selectUser } from '../../feature/userSlice'
+import { useSelector } from 'react-redux'
 
 const TweetModal = ({ setOpen, open }) => {
   const handleClose = () => setOpen(false);
   const [postContent, setPostContent] = useState('')
   const [postImageUrl, setPostImageUrl] = useState('')
   const isTrue = postContent ? true : false
+  const user = useSelector(selectUser)
   const handleSubmit = (e) => {
     e.preventDefault()
     const data = {
       post_id: uuidv4(),
       post_content: postContent,
       post_image: postImageUrl,
-      display_name: 'Sanpi',
-      icon_image: 'https://taroken.org/wp-content/uploads/2017/07/sunlight-e1500176424123.jpg',
+      display_name: user.displayName,
+      icon_image: user.photoURL,
       user_name: 'sanpicule',
       official_flag: true,
       post_date: serverTimestamp()
@@ -40,7 +43,7 @@ const TweetModal = ({ setOpen, open }) => {
         <Box className={ styles.tweet_modal_wrapper }>
           <form className={ styles.tweet_form } onSubmit={handleSubmit}>
             <div className={ styles.tweet_box_input }>
-              <Avatar src='https://taroken.org/wp-content/uploads/2017/07/sunlight-e1500176424123.jpg' />
+              <Avatar src= { user.photoURL } />
               <input
                 value={postContent}
                 placeholder='今何してる？'
