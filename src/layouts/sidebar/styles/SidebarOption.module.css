@@ -4,6 +4,8 @@
   padding: 10px 20px;
   transition: all .2s;
   margin-left: 20px;
+  text-decoration: none;
+  color: black;
 }
 
 .sidebar_option:hover {

@@ -30,7 +30,11 @@ const Sidebar = () => {
       <SidebarOption Text='メッセージ' Icon={EmailIcon}/>
       <SidebarOption Text='ブックマーク' Icon={BookmarkBorderIcon}/>
       <SidebarOption Text='リスト' Icon={ListAltIcon}/>
-      <SidebarOption Text='プロフィール' Icon={PermIdentityIcon}/>
+      <SidebarOption
+        Text='プロフィール'
+        Icon={PermIdentityIcon}
+        url={'/profile'}
+      />
       <SidebarOption Text='もっと見る' Icon={MoreHorizIcon}/>
       <Button
         variant="outlined"
