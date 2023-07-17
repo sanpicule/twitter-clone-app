@@ -20,9 +20,9 @@
   position: absolute;
   background-color: rgba(255, 255, 255, 0.8);
   top: 10%;
-  left: 60%;
+  right: 10%;
   border-radius: 20px;
-  width: 25%;
+  width: 380px;
   padding: 30px;
   text-align: center;
   box-shadow: 0 20px 30px 5px rgb(104, 103, 103);
@@ -52,11 +52,11 @@
 .login_google_button {
   width: 100%;
   margin-top: 30px !important;
-  background: #E53935 !important;
-  color: white !important;
-  padding: 10px 0 !important;
-  border-radius: 20px !important;
-  font-weight: bold !important;
+  border: 1px solid gray !important;
+  color: rgb(0, 0, 0) !important;
+  padding: 5px 0 !important;
+  border-radius: 5px !important;
+  text-transform: none !important;
 }
 
 .login_form {
@@ -82,4 +82,17 @@
   font-weight: bold;
   font-size: 15px;
   cursor: pointer;
+}
+
+.login_hiddenIcon {
+  text-align: center;
+  display: none;
+}
+.login_addIcon {
+  cursor: pointer;
+  color: gray;
+}
+.login_addIconLoaded {
+  cursor: pointer;
+  color: whitesmoke;
 }

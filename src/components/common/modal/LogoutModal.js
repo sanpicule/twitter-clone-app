@@ -5,9 +5,17 @@ import {
   Stack,
   Typography
 } from '@mui/material'
-import { auth } from '../../../Firebase'
+import { auth, signOut } from '../../../Firebase'
 
 const LogoutModal = ({ isOpen, onClose }) => {
+  const signOutUser = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      alert(error.Message)
+    }
+  };
+
   return (
     <div>
       <Modal
@@ -30,11 +38,7 @@ const LogoutModal = ({ isOpen, onClose }) => {
             <Button
               variant="outlined"
               color="error"
-              onClick={
-                async () => {
-                  await auth.signOut()
-                }
-              }
+              onClick={signOutUser}
             >ログアウト</Button>
           </Stack>
         </div>

@@ -1,19 +1,35 @@
 import React, { useState } from 'react'
 import TwitterIcon from '@mui/icons-material/Twitter'
+import { useDispatch } from 'react-redux';
+import LoadingButton from '@mui/lab/LoadingButton';
 import {
+  Box,
   Button,
   Divider,
+  IconButton,
   TextField,
   Typography
 } from '@mui/material'
 
 import styles from './styles/Login.module.css'
-import { auth, provider } from './Firebase'
-import { signInWithPopup } from 'firebase/auth'
+import {
+  auth,
+  provider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile
+} from './Firebase'
+import {
+  sendEmailVerification,
+  signInWithPopup
+} from 'firebase/auth'
 import PasswordResetModal from './PasswordResetModal'
+import { updateUserProfile } from './feature/userSlice';
 
 const Login = () => {
+  const dispatch = useDispatch()
   const [isLogin, setIsLogin] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const [error, setError] = useState(false)
   const [userName, setUserName] = useState('')
@@ -24,8 +40,37 @@ const Login = () => {
     await signInWithPopup(auth, provider)
   }
 
-  const handleSubmit = (e) => {
+  const signInEmail = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
+      setIsLoading(false)
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
+  const signUpEmail = async (e) => {
+    e.preventDefault()
+    setIsLoading(true)
+    try {
+      const authUser = await createUserWithEmailAndPassword(auth, email, password);
+      setIsLoading(true)
+      dispatch(
+        updateUserProfile({
+          displayName: userName,
+          photoURL: null
+        })
+      )
+      await sendEmailVerification(auth.currentUser)
+      await updateProfile(authUser.user, {
+        displayName: userName,
+        photoURL: null
+      })
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
   return (
@@ -44,7 +89,10 @@ const Login = () => {
           ? <Typography className={styles.login_title}>ログインしてツイートをしよう！</Typography>
           : <Typography className={styles.login_title}>登録してツイートしよう</Typography>
         }
-        <form className={styles.login_form} onSubmit={handleSubmit}>
+        <form
+          className={styles.login_form}
+          onSubmit={isLogin ? signInEmail : signUpEmail }
+        >
           {!isLogin &&
             <TextField
               required
@@ -71,12 +119,16 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             helperText={error ? 'このフィールドは必須です' : ''}
           />
-          <button
+          <LoadingButton
             type='submit'
-            className={styles.login_button}
+            size="small"
+            loading={isLoading}
+            loadingPosition="end"
+            variant="contained"
+            style={{ backgroundColor:'black', fontSize: '15px', borderRadius: '20px', fontWeight: 'bold' }}
           >
-            {isLogin ? 'ログイン' : '新規登録'}
-          </button>
+            <span>{isLogin ? 'ログイン' : '新規登録'}</span>
+          </LoadingButton>
         </form>
         <Button onClick={() => setModalOpen(true)}>
           パスワードを忘れた方
@@ -89,7 +141,8 @@ const Login = () => {
           className={styles.login_google_button}
           onClick={signInGoogle}
         >
-          Googleでログイン
+          <img width="20" height="20" src="https://img.icons8.com/fluency/48/google-logo.png" alt="google-logo"/>
+          <Typography style={{ marginLeft: '10px' }}>Googleでログイン</Typography>
         </Button>
       </div>
       <PasswordResetModal

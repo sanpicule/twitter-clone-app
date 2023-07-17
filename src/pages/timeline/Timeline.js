@@ -16,6 +16,7 @@ const Timeline = () => {
   const [posts, setPosts] = useState([])
   const [open, setOpen] = useState(false)
   const [message, setMessage] = useState('')
+
   useEffect(() => {
     const unsubscribe = onSnapshot(
       query(collection(db, 'posts'), orderBy('post_date', 'desc')),
