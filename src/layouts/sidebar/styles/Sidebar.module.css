@@ -10,6 +10,11 @@
   color: #50b7f5;
   font-size: 30px !important;
   margin: 0 0 20px 20px;
+  transition: all .3s !important;
+}
+
+.sidebar_twitter_icon:hover {
+  opacity: .7;
 }
 
 .sidebar_tweet {

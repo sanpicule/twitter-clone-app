@@ -8,11 +8,12 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 import ListAltIcon from '@mui/icons-material/ListAlt'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import styles from './styles/Sidebar.module.css'
 import LogoutModal from '../../components/common/modal/LogoutModal'
 import TweetModal from '../../components/common/modal/TweetModal'
 import SidebarOption from './SidebarOption'
+import { Link } from 'react-router-dom'
 
 
 
@@ -23,8 +24,19 @@ const Sidebar = () => {
 
   return (
     <div className={styles.sidebar}>
-      <TwitterIcon className={styles.sidebar_twitter_icon} />
-      <SidebarOption Text='ホーム' Icon={HomeIcon}/>
+      <Box
+        component={Link}
+        to={'/'}
+      >
+        <TwitterIcon
+          className={styles.sidebar_twitter_icon}
+        />
+      </Box>
+      <SidebarOption
+        Text='ホーム'
+        Icon={HomeIcon}
+        url={'/'}
+      />
       <SidebarOption Text='話題を検索' Icon={SearchIcon}/>
       <SidebarOption Text='通知' Icon={NotificationsNoneIcon}/>
       <SidebarOption Text='メッセージ' Icon={EmailIcon}/>
