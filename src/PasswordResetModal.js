@@ -6,20 +6,21 @@ import {
   Stack,
   Typography
 } from '@mui/material'
+import { auth, sendPasswordResetEmail } from './Firebase'
 
 const PasswordResetModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('')
   const sendResetEmail = async () => {
-    console.log(email)
-    // ↓多分こんな感じでできる
-    // await auth.sendPasswordResetEmail(email).then(() => {
-    //   setModalOpen(false)
-    //   setEmail('')
-    // }).catch((err) => {
-    //   alert(err.message)
-    //   setEmail('')
-    // })
-  }
+    await sendPasswordResetEmail(auth, email)
+      .then(() => {
+        onClose()
+        setEmail('')
+      })
+      .catch((err) => {
+        alert(err.message);
+        setEmail('')
+      })
+  };
   return (
     <div>
       <Modal

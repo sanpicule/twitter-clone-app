@@ -125,7 +125,9 @@ const Login = () => {
             loading={isLoading}
             loadingPosition="end"
             variant="contained"
-            style={{ backgroundColor:'black', fontSize: '15px', borderRadius: '20px', fontWeight: 'bold' }}
+            sx={
+              "background-color:black; padding: 10px"
+            }
           >
             <span>{isLogin ? 'ログイン' : '新規登録'}</span>
           </LoadingButton>

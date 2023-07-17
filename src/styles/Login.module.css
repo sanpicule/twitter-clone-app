@@ -73,17 +73,6 @@
   outline: none;
 }
 
-.login_button {
-  padding: 10px;
-  border: none;
-  background: var(--twitter-color);
-  border-radius: 30px;
-  color: white;
-  font-weight: bold;
-  font-size: 15px;
-  cursor: pointer;
-}
-
 .login_hiddenIcon {
   text-align: center;
   display: none;
