@@ -10,7 +10,8 @@ import { auth, sendPasswordResetEmail } from './Firebase'
 
 const PasswordResetModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('')
-  const sendResetEmail = async () => {
+  const sendResetEmail = async (e) => {
+    e.preventDefault()
     await sendPasswordResetEmail(auth, email)
       .then(() => {
         onClose()

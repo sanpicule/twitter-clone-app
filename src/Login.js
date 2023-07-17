@@ -3,10 +3,8 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import { useDispatch } from 'react-redux';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {
-  Box,
   Button,
   Divider,
-  IconButton,
   TextField,
   Typography
 } from '@mui/material'
@@ -31,7 +29,7 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
-  const [error, setError] = useState(false)
+  const [error] = useState(false)
   const [userName, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
