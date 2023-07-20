@@ -4,6 +4,7 @@
   min-width: 250px;
   padding: 20px;
   margin-left: 10%;
+  position: relative;
 }
 
 .sidebar_twitter_icon {
@@ -30,4 +31,19 @@
 
 .sidebar_tweet:hover {
   opacity: .7;
+}
+
+.user_info {
+  position: absolute;
+  width: 80%;
+  bottom: 5%;
+  padding: 10px;
+  border-radius: 30px;
+  transition: all .3s;
+  cursor: pointer;
+  background: #ebebeb;
+}
+
+.user_info:hover {
+  background: #acacac;
 }

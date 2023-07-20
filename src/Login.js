@@ -46,6 +46,7 @@ const Login = () => {
       setIsLoading(false)
     } catch (error) {
       alert(error.message)
+      setIsLoading(false)
     }
   }
 
@@ -54,20 +55,22 @@ const Login = () => {
     setIsLoading(true)
     try {
       const authUser = await createUserWithEmailAndPassword(auth, email, password);
-      setIsLoading(true)
-      dispatch(
-        updateUserProfile({
-          displayName: userName,
-          photoURL: null
-        })
-      )
-      await sendEmailVerification(auth.currentUser)
-      await updateProfile(authUser.user, {
+      await updateProfile(authUser?.user, {
         displayName: userName,
         photoURL: null
       })
+      await sendEmailVerification(authUser?.user)
+      alert('認証用のメールを送信しました。')
+      dispatch(
+        updateUserProfile({
+          displayName: authUser?.displayName,
+          photoURL: null
+        })
+      )
+      setIsLoading(false)
     } catch (error) {
       alert(error.message)
+      setIsLoading(false)
     }
   }
 
@@ -121,11 +124,7 @@ const Login = () => {
             type='submit'
             size="small"
             loading={isLoading}
-            loadingPosition="end"
             variant="contained"
-            sx={
-              "background-color:black; padding: 10px"
-            }
           >
             <span>{isLogin ? 'ログイン' : '新規登録'}</span>
           </LoadingButton>

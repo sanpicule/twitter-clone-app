@@ -1,4 +1,13 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import {
+  Avatar,
+  Box,
+  Button,
+  Stack,
+  Typography
+} from '@mui/material'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import HomeIcon from '@mui/icons-material/Home'
 import SearchIcon from '@mui/icons-material/Search'
@@ -8,19 +17,19 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 import ListAltIcon from '@mui/icons-material/ListAlt'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
-import { Box, Button } from '@mui/material'
+
 import styles from './styles/Sidebar.module.css'
 import LogoutModal from '../../components/common/modal/LogoutModal'
 import TweetModal from '../../components/common/modal/TweetModal'
 import SidebarOption from './SidebarOption'
-import { Link } from 'react-router-dom'
-
-
+import { selectUser } from '../../feature/userSlice'
+import SidebarProfileDots from './SidebarProfileDots'
 
 const Sidebar = () => {
   const [open, setOpen] = React.useState(false);
   const [modalOpen, setModalOpen] = useState(false)
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => setOpen(true)
+  const user = useSelector(selectUser)
 
   return (
     <div className={styles.sidebar}>
@@ -56,16 +65,27 @@ const Sidebar = () => {
         ツイートする
       </Button>
       <TweetModal open={open} setOpen={setOpen} />
-      <Button
-        onClick={() => setModalOpen(true)}
-        style={{ marginTop: '20px', width: '100%' }}
-      >
-        ログアウト
-      </Button>
       <LogoutModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
       />
+      <Stack
+        direction='row'
+        justifyContent='space-between'
+        gap={1}
+        className={styles.user_info}
+      >
+        <Stack direction='row' gap={1} alignItems='center'>
+          <Avatar src={user.photoURL} />
+          <Stack>
+            <Typography>{user.displayName}</Typography>
+            <Typography fontSize='small' color='gray'>@sanpicule</Typography>
+          </Stack>
+        </Stack>
+        <SidebarProfileDots
+          setModalOpen={setModalOpen}
+        />
+      </Stack>
     </div>
   )
 }

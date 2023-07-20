@@ -14,12 +14,14 @@ function App() {
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, async (authUser) => {
       if (authUser) {
-        setIsLoggedIn(true)
-        dispatch(login({
-          uid: authUser.uid,
-          photoURL: authUser.photoURL,
-          displayName: authUser.displayName
-        }))
+        if(authUser.emailVerified) {
+          setIsLoggedIn(true)
+          dispatch(login({
+            uid: authUser.uid,
+            photoURL: authUser.photoURL,
+            displayName: authUser.displayName
+          }))
+        }
       } else {
         setIsLoggedIn(false)
         dispatch(logout())
