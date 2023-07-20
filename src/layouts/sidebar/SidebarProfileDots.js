@@ -42,16 +42,11 @@ const SidebarProfileDots = ({ setModalOpen }) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
       >
-        <MenuItem style={{ color: 'red' }} onClick={handleLogout}>
+        <MenuItem
+          style={{ color: 'red' }}
+          onClick={handleLogout}
+        >
           <LogoutIcon />
           <Typography style={{ marginLeft: '10px' }}>ログアウト</Typography>
         </MenuItem>

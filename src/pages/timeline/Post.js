@@ -8,15 +8,19 @@ import {
 } from "firebase/firestore"
 import db from '../../Firebase'
 import classNames from 'classnames';
+import IconButton from '@mui/material/IconButton'
 
 import {
   ChatBubbleOutline,
   FavoriteBorder,
-  Repeat,
   VerifiedUser
 } from '@mui/icons-material'
+import RepeatRoundedIcon from '@mui/icons-material/RepeatRounded'
+import DriveFileRenameOutlineRoundedIcon from '@mui/icons-material/DriveFileRenameOutlineRounded'
 import {
   Avatar,
+  Menu,
+  MenuItem,
   Stack,
   Typography
 } from '@mui/material'
@@ -33,6 +37,17 @@ const Post = ({ post, setOpen, setMessage }) => {
   const fav = classNames(styles.fav, styles.post_icon)
   const share = classNames(styles.public, styles.post_icon)
   const user = useSelector(selectUser)
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   const handleDelete = async(postId) => {
     try {
       const q = query(collection(db, 'posts'), where('post_id', '==', postId))
@@ -96,14 +111,59 @@ const Post = ({ post, setOpen, setMessage }) => {
       <Stack
         direction='row'
         justifyContent='space-between'
+        alignItems='center'
         className={styles.post_icons}
       >
         <Stack
           direction='row'
           spacing={8}
+          alignItems='center'
         > 
           <ChatBubbleOutline fontSize='small' className={bubble} />
-          <Repeat fontSize='small' className={repeat} />
+          <IconButton
+            aria-label="more"
+            id="long-button"
+            aria-controls={open ? 'long-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <RepeatRoundedIcon fontSize='small' className={repeat} />
+          </IconButton>
+          <Menu
+            id="demo-positioned-menu"
+            aria-labelledby="demo-positioned-button"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+          >
+            <MenuItem>
+              <RepeatRoundedIcon fontSize='small' />
+              <Typography
+                marginLeft='10px'
+                fontSize='small'
+              >
+                リツイート
+              </Typography>
+            </MenuItem>
+            <MenuItem>
+              <DriveFileRenameOutlineRoundedIcon fontSize='small' />
+              <Typography
+                marginLeft='10px'
+                fontSize='small'
+              >
+                引用リツイート
+              </Typography>
+            </MenuItem>
+          </Menu>
           <FavoriteBorder fontSize='small' className={fav} />
         </Stack>
         <IosShareIcon fontSize='small' className={share} />

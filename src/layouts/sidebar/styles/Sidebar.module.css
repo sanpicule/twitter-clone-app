@@ -39,11 +39,10 @@
   bottom: 5%;
   padding: 10px;
   border-radius: 30px;
-  transition: all .3s;
+  transition: all .4s;
   cursor: pointer;
-  background: #ebebeb;
 }
 
 .user_info:hover {
-  background: #acacac;
+  background: #ebebeb;
 }
