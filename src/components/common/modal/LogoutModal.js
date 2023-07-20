@@ -2,6 +2,7 @@ import React from 'react'
 import {
   Box,
   Button,
+  Divider,
   Modal,
   Stack,
   Typography
@@ -29,16 +30,21 @@ const LogoutModal = ({ isOpen, onClose }) => {
         onClose={onClose}
       >
         <Box className={styles.logout_modal}>
-          <Stack gap={5}>
+          <Stack gap={3}>
             <h2>TwitterCloneからログアウトしますか？</h2>
+            <Divider />
             <Typography color='gray'>
               いつでもログインし直すことができます。アカウントを切り替える場合は、既存のアカウントを追加すると切り替えることができます。
             </Typography>
-            <Stack gap={1}>
+            <Stack gap={2}>
               <Button
                 variant="contained"
                 color="error"
                 onClick={signOutUser}
+                style={{
+                  borderRadius: '30px',
+                  fontWeight: 'bold'
+                }}
               >
                 ログアウト
               </Button>
@@ -46,6 +52,7 @@ const LogoutModal = ({ isOpen, onClose }) => {
                 variant="outlined"
                 color="inherit"
                 onClick={onClose}
+                style={{ borderRadius: '30px' }}
               >
                 キャンセル
               </Button>
