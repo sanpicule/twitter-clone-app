@@ -24,10 +24,12 @@ import TweetModal from '../../components/common/modal/TweetModal'
 import SidebarOption from './SidebarOption'
 import { selectUser } from '../../feature/userSlice'
 import SidebarProfileDots from './SidebarProfileDots'
+import ChangeIconModal from '../../components/common/modal/ChangeIconModal'
 
 const Sidebar = () => {
   const [open, setOpen] = React.useState(false);
   const [modalOpen, setModalOpen] = useState(false)
+  const [modalChangeIconOpen, setModalChangeIconOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const user = useSelector(selectUser)
 
@@ -64,10 +66,17 @@ const Sidebar = () => {
       >
         ツイートする
       </Button>
-      <TweetModal open={open} setOpen={setOpen} />
+      <TweetModal
+        open={open}
+        setOpen={setOpen}
+      />
       <LogoutModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
+      />
+      <ChangeIconModal
+        isOpen={modalChangeIconOpen}
+        onClose={() => setModalChangeIconOpen(false)}
       />
       <Stack
         direction='row'
@@ -84,6 +93,7 @@ const Sidebar = () => {
         </Stack>
         <SidebarProfileDots
           setModalOpen={setModalOpen}
+          setModalChangeIconOpen={setModalChangeIconOpen}
         />
       </Stack>
     </div>

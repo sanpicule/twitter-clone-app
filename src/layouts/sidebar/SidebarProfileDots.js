@@ -3,11 +3,12 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import GroupAddIcon from '@mui/icons-material/GroupAdd'
 import { Typography } from '@mui/material'
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from '@mui/icons-material/Logout'
+import ImageIcon from '@mui/icons-material/Image'
 
-const SidebarProfileDots = ({ setModalOpen }) => {
+const SidebarProfileDots = ({ setModalOpen, setModalChangeIconOpen }) => {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   
@@ -21,6 +22,10 @@ const SidebarProfileDots = ({ setModalOpen }) => {
 
   const handleLogout = () => {
     setModalOpen(true)
+    handleClose()
+  }
+  const handleChangeIconModal = () => {
+    setModalChangeIconOpen(true)
     handleClose()
   }
 
@@ -53,6 +58,10 @@ const SidebarProfileDots = ({ setModalOpen }) => {
         <MenuItem onClick={handleClose}>
           <GroupAddIcon />
           <Typography style={{ marginLeft: '10px' }}>アカウントを追加</Typography>
+        </MenuItem>
+        <MenuItem onClick={handleChangeIconModal}>
+          <ImageIcon />
+          <Typography style={{ marginLeft: '10px' }}>アイコン画像を変更</Typography>
         </MenuItem>
       </Menu>
     </div>
