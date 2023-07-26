@@ -7,7 +7,7 @@ import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded'
 import Person2RoundedIcon from '@mui/icons-material/Person2Rounded'
 import { Typography } from '@mui/material'
 
-const DotsMenu = ({ handleDelete, postId, iconImage, photoURL }) => {
+const DotsMenu = ({ handleDelete, postId, displayName, LoginUserName }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
   
@@ -46,7 +46,7 @@ const DotsMenu = ({ handleDelete, postId, iconImage, photoURL }) => {
           horizontal: 'left',
         }}
       >
-        {photoURL === iconImage &&
+        {displayName === LoginUserName &&
           <MenuItem onClick={() => handleDelete(postId)} style={{ color: 'red' }}>
             <DeleteRoundedIcon />
             <Typography style={{ marginLeft: '10px' }}>削除</Typography>

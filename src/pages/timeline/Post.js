@@ -90,8 +90,8 @@ const Post = ({ post, setOpen, setMessage }) => {
           <DotsMenu
             handleDelete={handleDelete}
             postId={post.post_id}
-            iconImage={post.icon_image}
-            photoURL={user.photoURL}
+            displayName={post.display_name}
+            LoginUserName={user.displayName}
           />
       </Stack>
       <Stack className={styles.post_contents}>
