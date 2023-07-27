@@ -15,7 +15,6 @@ import { auth, storage, updateProfile } from '../../../Firebase'
 import styles from './ChangeIconModal.module.css'
 
 const ChangeIconModal = ({ isOpen, onClose }) => {
-  console.log(auth.currentUser)
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
   const [changeIconInfo, setChangeIconInfo] = useState('')
@@ -24,7 +23,7 @@ const ChangeIconModal = ({ isOpen, onClose }) => {
   }
   const handleChangeIcon = async () => {
     
-    let url = "";
+    let url = ""
     if (changeIconInfo) {
       const S =
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
