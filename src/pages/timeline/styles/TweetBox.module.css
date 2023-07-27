@@ -16,7 +16,6 @@
 .tweet_box_input > input {
   flex: 1;
   font-size: 15px;
-  font-weight: 600 !important;
   margin-left: 20px;
   border: none;
   outline: none;
@@ -29,7 +28,7 @@
 }
 
 .tweet_button {
-  background-color: #50b7f5 !important;
+  background-color: #000 !important;
   border-radius: 30px !important;
   color: white !important;
   font-weight: bold !important;
@@ -40,7 +39,7 @@
   align-items: stretch !important;
   margin: 20px 10px 0 auto !important;
   transition: all .3s !important;
-  opacity: .7;
+  opacity: .4;
 }
 
 .tweet_button_active {

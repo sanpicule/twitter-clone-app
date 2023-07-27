@@ -106,7 +106,7 @@ const TweetBox = ({ setOpen, setMessage }) => {
           type='submit'
           disabled={!isTrue}
         >
-          ツイートする
+          投稿する
         </Button>
       </form>
     </div>

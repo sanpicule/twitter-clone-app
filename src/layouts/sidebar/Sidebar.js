@@ -64,7 +64,7 @@ const Sidebar = () => {
         className={styles.sidebar_tweet}
         onClick={handleOpen}
       >
-        ツイートする
+        投稿する
       </Button>
       <TweetModal
         open={open}

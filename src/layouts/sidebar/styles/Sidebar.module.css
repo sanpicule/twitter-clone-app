@@ -19,7 +19,7 @@
 }
 
 .sidebar_tweet {
-  background: #50b7f5 !important;
+  background: #000000 !important;
   color: rgb(255, 254, 254) !important;
   border: none !important;
   border-radius: 20px !important;
@@ -44,5 +44,5 @@
 }
 
 .user_info:hover {
-  background: #ebebeb;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
