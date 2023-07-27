@@ -8,7 +8,7 @@ import {
   Stack,
   Typography
 } from '@mui/material'
-import TwitterIcon from '@mui/icons-material/Twitter'
+import CodeOffIcon from '@mui/icons-material/CodeOff';
 import HomeIcon from '@mui/icons-material/Home'
 import SearchIcon from '@mui/icons-material/Search'
 import EmailIcon from '@mui/icons-material/Email'
@@ -39,7 +39,7 @@ const Sidebar = () => {
         component={Link}
         to={'/'}
       >
-        <TwitterIcon
+        <CodeOffIcon
           className={styles.sidebar_twitter_icon}
         />
       </Box>

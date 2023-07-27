@@ -8,9 +8,9 @@
 }
 
 .sidebar_twitter_icon {
-  color: #50b7f5;
+  color: black;
   font-size: 30px !important;
-  margin: 0 0 20px 20px;
+  margin: 0 0 20px 30px;
   transition: all .3s !important;
 }
 
