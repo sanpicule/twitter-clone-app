@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import TwitterIcon from '@mui/icons-material/Twitter'
-import { useDispatch } from 'react-redux';
-import LoadingButton from '@mui/lab/LoadingButton';
+import CodeOffIcon from '@mui/icons-material/CodeOff'
+import { useDispatch } from 'react-redux'
+import LoadingButton from '@mui/lab/LoadingButton'
 import {
   Button,
   Divider,
@@ -84,11 +84,11 @@ const Login = () => {
       }}
     >
       <div className={styles.login_container}>
-        <TwitterIcon className={styles.twitter_icon} />
+        <CodeOffIcon className={styles.twitter_icon} />
         <Divider />
         {isLogin
-          ? <Typography className={styles.login_title}>ログインしてツイートをしよう！</Typography>
-          : <Typography className={styles.login_title}>登録してツイートしよう</Typography>
+          ? <Typography className={styles.login_title}>ログインして投稿しよう！</Typography>
+          : <Typography className={styles.login_title}>登録して投稿しよう</Typography>
         }
         <form
           className={styles.login_form}
